@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Organize as tarefas da sua equipe em um só lugar.">
+  <title>Rotina — tarefas da equipe</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Rotina, início"><span class="brand-mark">r.</span> rotina</a>
+      <span class="topbar-note">Organização simples para o dia a dia</span>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">PAINEL DA EQUIPE</p>
+      <h1>Bom trabalho começa<br>com tudo no lugar.</h1>
+      <p class="intro-copy">Anote o que precisa ser feito e acompanhe cada tarefa.</p>
+    </section>
+
+    <section class="summary" aria-label="Resumo das tarefas">
+      <article class="summary-card"><span class="summary-label">Pendentes</span><strong id="pending-count">0</strong></article>
+      <article class="summary-card"><span class="summary-label">Concluídas</span><strong id="done-count">0</strong></article>
+      <article class="summary-card"><span class="summary-label">Total</span><strong id="total-count">0</strong></article>
+    </section>
+
+    <section class="workspace">
+      <form id="task-form" class="task-form">
+        <div class="section-heading">
+          <div><p class="eyebrow">NOVA TAREFA</p><h2>O que precisa ser feito?</h2></div>
+        </div>
+        <label for="task-title">Tarefa</label>
+        <input id="task-title" name="title" type="text" maxlength="80" placeholder="Ex.: Preparar relatório mensal" required>
+        <div class="form-row">
+          <div class="field"><label for="task-owner">Responsável <span>(opcional)</span></label><input id="task-owner" name="owner" type="text" maxlength="40" placeholder="Nome da pessoa"></div>
+          <div class="field"><label for="task-date">Prazo <span>(opcional)</span></label><input id="task-date" name="date" type="date"></div>
+        </div>
+        <label for="task-priority">Prioridade</label>
+        <select id="task-priority" name="priority">
+          <option value="normal">Normal</option>
+          <option value="high">Alta</option>
+          <option value="low">Baixa</option>
+        </select>
+        <button class="primary-button" type="submit"><span aria-hidden="true">+</span> Adicionar tarefa</button>
+        <p id="form-message" class="form-message" aria-live="polite"></p>
+      </form>
+
+      <section class="task-board" aria-labelledby="list-title">
+        <div class="board-heading">
+          <div><p class="eyebrow">ACOMPANHAMENTO</p><h2 id="list-title">Tarefas da equipe</h2></div>
+          <label class="filter-label" for="task-filter">Mostrar
+            <select id="task-filter" aria-label="Filtrar tarefas">
+              <option value="all">Todas</option><option value="pending">Pendentes</option><option value="done">Concluídas</option>
+            </select>
+          </label>
+          <button id="clear-completed" type="button">
+            Limpar concluídas
+          </button>
+        </div>
+        <label for="task-search">Buscar tarefa</label>
+<input
+  id="task-search"
+  type="search"
+  placeholder="Digite parte do nome da tarefa"
+>
+        <div id="task-list" class="task-list"></div>
+        <p id="empty-state" class="empty-state">Nenhuma tarefa por aqui. Adicione a primeira ao lado.</p>
+      </section>
+    </section>
+    <footer>Seus dados ficam salvos neste navegador.</footer>
+  </main>
+</body>
+</html>
